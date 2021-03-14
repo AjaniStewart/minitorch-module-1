@@ -21,7 +21,7 @@ def add(x, y):
 
 def neg(x):
     ":math:`f(x) = -x`"
-    return -x
+    return float(-x)
 
 
 def lt(x, y):
@@ -52,7 +52,7 @@ def sigmoid(x):
     for stability.
 
     """
-    if x >= 0:
+    if x >= 0.0:
         return (1.0) / (1.0 + exp(-x))
     else:
         return (exp(x)) / (1.0 + exp(x))
@@ -64,12 +64,12 @@ def relu(x):
 
     (See `<https://en.wikipedia.org/wiki/Rectifier_(neural_networks)>`_ .)
     """
-    return max(x, 0)
+    return max(x, 0.0)
 
 
 def relu_back(x, y):
     ":math:`f(x) =` y if x is greater than 0 else 0"
-    return y if max(x, 0) >= 0.0 else 0
+    return y if max(x, 0.0) >= 0.0 else 0.0
 
 
 EPS = 1e-6
