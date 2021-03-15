@@ -179,8 +179,16 @@ class FunctionBase:
             (see `is_constant` to remove unneeded variables)
 
         """
-        # TODO: Implement for Task 1.3.
-        raise NotImplementedError("Need to implement for Task 1.3")
+        if d_output is None:
+            d_output = 1.0
+
+        derivatives = cls.backward(ctx, d_output)
+        res = [
+            VariableWithDeriv(v, d)
+            for v, d in zip(inputs, derivatives)
+            if not is_constant(v)
+        ]
+        return res
 
 
 def is_leaf(val):
